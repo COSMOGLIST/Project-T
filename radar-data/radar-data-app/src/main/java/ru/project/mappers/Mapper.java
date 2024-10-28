@@ -1,6 +1,6 @@
-package project.mappers;
+package ru.project.mappers;
 import lombok.experimental.UtilityClass;
-import project.models.Technology;
+import ru.project.models.Technology;
 import ru.project.models.TechnologyDto;
 
 

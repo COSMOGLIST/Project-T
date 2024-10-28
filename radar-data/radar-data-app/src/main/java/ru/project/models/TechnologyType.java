@@ -1,4 +1,4 @@
-package project.models;
+package ru.project.models;
 
 public enum TechnologyType {
     FRAMEWORK,

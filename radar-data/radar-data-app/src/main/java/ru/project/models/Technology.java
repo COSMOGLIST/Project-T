@@ -1,10 +1,9 @@
-package project.models;
+package ru.project.models;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.project.models.Rang;
 
 @Entity
 @Getter

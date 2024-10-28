@@ -1,4 +1,4 @@
-package project.filters;
+package ru.project.filters;
 
 import java.util.ArrayList;
 import java.util.List;

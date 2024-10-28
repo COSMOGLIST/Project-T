@@ -1,4 +1,4 @@
-package project.filters;
+package ru.project.filters;
 
 public enum TechnologyFields {
     id,

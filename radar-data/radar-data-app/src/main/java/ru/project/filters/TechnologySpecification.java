@@ -1,7 +1,7 @@
-package project.filters;
+package ru.project.filters;
 
 import org.springframework.data.jpa.domain.Specification;
-import project.models.Technology;
+import ru.project.models.Technology;
 
 import java.util.List;
 

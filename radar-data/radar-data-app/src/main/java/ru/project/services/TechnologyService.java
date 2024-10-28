@@ -1,4 +1,4 @@
-package project.services;
+package ru.project.services;
 import ru.project.models.TechnologyDto;
 
 import java.util.List;

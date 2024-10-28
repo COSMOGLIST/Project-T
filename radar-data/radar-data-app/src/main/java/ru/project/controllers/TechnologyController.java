@@ -1,8 +1,8 @@
-package project.controllers;
+package ru.project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import project.services.TechnologyService;
+import ru.project.services.TechnologyService;
 import ru.project.models.TechnologyDto;
 
 import java.util.List;

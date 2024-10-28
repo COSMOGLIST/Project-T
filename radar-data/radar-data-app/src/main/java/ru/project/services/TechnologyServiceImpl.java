@@ -1,22 +1,21 @@
-package project.services;
+package ru.project.services;
 
 import lombok.experimental.ExtensionMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import project.filters.TechnologyFields;
-import project.filters.TechnologyFilter;
-import project.mappers.Mapper;
-import project.models.Technology;
+import ru.project.filters.TechnologyFields;
+import ru.project.filters.TechnologyFilter;
+import ru.project.mappers.Mapper;
+import ru.project.models.Technology;
+import ru.project.filters.TechnologySpecification;
 import ru.project.models.Rang;
-import project.models.TechnologyType;
-import project.repositories.TechnologyRepository;
+import ru.project.models.TechnologyType;
+import ru.project.repositories.TechnologyRepository;
 import ru.project.models.TechnologyDto;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static project.filters.TechnologySpecification.getSpecification;
 
 @Service
 @ExtensionMethod(Mapper.class)
@@ -61,7 +60,7 @@ public class TechnologyServiceImpl implements TechnologyService {
         if (name != null) {
             technologyFilters.add(new TechnologyFilter(TechnologyFields.name, name));
         }
-        Specification<Technology> specification = getSpecification(technologyFilters);
+        Specification<Technology> specification = TechnologySpecification.getSpecification(technologyFilters);
         return technologyRepository.findAll(specification).stream().map(technology -> technology.toDto()).toList();
     }
 }

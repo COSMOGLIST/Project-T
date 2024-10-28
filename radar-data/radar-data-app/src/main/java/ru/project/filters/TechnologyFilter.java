@@ -1,4 +1,4 @@
-package project.filters;
+package ru.project.filters;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

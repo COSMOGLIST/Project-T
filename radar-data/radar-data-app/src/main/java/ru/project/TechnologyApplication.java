@@ -1,4 +1,4 @@
-package project;
+package ru.project;
 
 
 import org.springframework.boot.SpringApplication;
