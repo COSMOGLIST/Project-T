@@ -19,7 +19,7 @@ public class TechnologyClientConfiguration {
     }
 
     @Bean
-    public RestTemplate provideCatRestTemplate() {
+    public RestTemplate provideTechnologyRestTemplate() {
         return restTemplate;
     }
 }

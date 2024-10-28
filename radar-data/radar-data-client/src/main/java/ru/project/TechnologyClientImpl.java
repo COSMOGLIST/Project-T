@@ -1,28 +1,62 @@
 package ru.project;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 import ru.project.models.TechnologyDto;
 
 import java.util.List;
+import java.util.Optional;
 
 public class TechnologyClientImpl implements TechnologyClient {
-    public void creation(TechnologyDto technologyDto) {
 
+    private final String address;
+
+    private final RestTemplate restTemplate;
+
+    @Autowired
+    public TechnologyClientImpl(@Value("${serviceTechnology.url}") String address,
+                                @Qualifier("provideTechnologyRestTemplate") RestTemplate restTemplate) {
+        this.address = address;
+        this.restTemplate = restTemplate;
+    }
+
+    public void creation(TechnologyDto technologyDto) {
+        HttpEntity<TechnologyDto> requestEntity = new HttpEntity<>(technologyDto);
+        restTemplate.exchange(address, HttpMethod.POST, requestEntity, String.class);
     }
 
     public TechnologyDto findById(int id) {
-
+        return restTemplate.getForEntity(address + "/" + id, TechnologyDto.class).getBody();
     }
 
     public void deleteById(int id) {
-
+        restTemplate.exchange(address + "/" + id, HttpMethod.DELETE, null, String.class);
     }
 
     public void vote(int id, String rang) {
-
+        restTemplate.exchange(address + "/" + id + "/vote", HttpMethod.PUT, null, String.class);
     }
 
 
     public List<TechnologyDto> getByCriteria(String id, String name, String technologyType, String ring) {
+        return exchangeAsList(addressCreation(id, name, technologyType, ring), new ParameterizedTypeReference<>() {});
+    }
 
+    private  <T> List<T> exchangeAsList(String uri, ParameterizedTypeReference<List<T>> responseType) {
+        return restTemplate.exchange(uri, HttpMethod.GET, null, responseType).getBody();
+    }
+    private String addressCreation(String id, String name, String technologyType, String ring) {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(address)
+                .queryParamIfPresent("technologyType", Optional.ofNullable(technologyType))
+                .queryParamIfPresent("ring", Optional.ofNullable(ring))
+                .queryParamIfPresent("id", Optional.ofNullable(id))
+                .queryParamIfPresent("name", Optional.ofNullable(name));
+        return builder.buildAndExpand().toString();
     }
 }

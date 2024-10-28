@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   db:
-    container_name: gateway
+    container_name: radar-docker
     image: postgres:14.1-alpine
     restart: unless-stopped
     environment:
@@ -9,7 +9,7 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=postgres
     ports:
-      - '4000:5432'
+      - '4001:5432'
     volumes:
       - db:/var/lib/postgresql/data
 volumes:

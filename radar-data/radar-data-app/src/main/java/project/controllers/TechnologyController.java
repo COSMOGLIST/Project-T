@@ -24,7 +24,7 @@ public class TechnologyController {
 
     @PutMapping("/{id}/vote")
     public void vote(@PathVariable(name = "id") int id, @RequestParam(name = "ring") String ring) {
-        technologyService.vote(int id, String ring);
+        technologyService.vote(id, ring);
     }
 
     @GetMapping("/{id}")

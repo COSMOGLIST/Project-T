@@ -39,6 +39,11 @@ public class TechnologyServiceImpl implements TechnologyService {
     public TechnologyDto findById(int id) {
         return technologyRepository.getReferenceById(id).toDto();
     }
+    public void vote(int id, String ring) {
+        Technology technology = technologyRepository.getReferenceById(id);
+        technology.setRing(Ring.valueOf(ring));
+        technologyRepository.save(technology);
+    }
     public void deleteById(int id) {
         technologyRepository.deleteById(id);
     }

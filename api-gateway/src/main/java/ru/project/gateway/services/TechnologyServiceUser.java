@@ -1,5 +1,6 @@
 package ru.project.gateway.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.project.TechnologyClient;
 import ru.project.models.TechnologyDto;
@@ -10,6 +11,7 @@ import java.util.List;
 public class TechnologyServiceUser {
     private TechnologyClient technologyClient;
 
+    @Autowired
     public TechnologyServiceUser(TechnologyClient technologyClient) {
         this.technologyClient = technologyClient;
     }
