@@ -28,13 +28,13 @@ public class TechnologyServiceImpl implements TechnologyService {
     public TechnologyServiceImpl(TechnologyRepository technologyRepository) {
         this.technologyRepository = technologyRepository;
     }
-    public void creation(TechnologyDto technologyDto) {
+    public TechnologyDto creation(TechnologyDto technologyDto) {
         Technology technology = new Technology(technologyDto.getName(),
                 TechnologyType.valueOf(technologyDto.getTechnologyType()),
                 technologyDto.getLink(),
                 technologyDto.getVersion(),
                 Rang.valueOf(technologyDto.getRang()));
-        technologyRepository.save(technology);
+        return technologyRepository.save(technology).toDto();
     }
     public TechnologyDto findById(int id) {
         return technologyRepository.getReferenceById(id).toDto();

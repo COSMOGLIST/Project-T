@@ -25,8 +25,8 @@ public class AdminController {
     }
 
     @PutMapping("/{id}/vote")
-    public void vote(@PathVariable(name = "id") int id, @RequestParam(name = "ring") String ring) {
-        technologyServiceUser.vote(id, ring);
+    public void vote(@PathVariable(name = "id") int id, @RequestParam(name = "rang") String rang) {
+        technologyServiceUser.vote(id, rang);
     }
 
     @GetMapping("/{id}")
@@ -43,7 +43,7 @@ public class AdminController {
     public List<TechnologyDto> getByCriteria(@RequestParam(name = "id", required = false) String id,
                                              @RequestParam(name = "name", required = false) String name,
                                              @RequestParam(name = "technologyType", required = false) String technologyType,
-                                             @RequestParam(name = "ring", required = false) String ring) {
-        return technologyServiceUser.getByCriteria(id, name, technologyType, ring);
+                                             @RequestParam(name = "rang", required = false) String rang) {
+        return technologyServiceUser.getByCriteria(id, name, technologyType, rang);
     }
 }

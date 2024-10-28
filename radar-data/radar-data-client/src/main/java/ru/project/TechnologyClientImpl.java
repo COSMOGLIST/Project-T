@@ -26,9 +26,9 @@ public class TechnologyClientImpl implements TechnologyClient {
         this.restTemplate = restTemplate;
     }
 
-    public void creation(TechnologyDto technologyDto) {
+    public TechnologyDto creation(TechnologyDto technologyDto) {
         HttpEntity<TechnologyDto> requestEntity = new HttpEntity<>(technologyDto);
-        restTemplate.exchange(address, HttpMethod.POST, requestEntity, String.class);
+        return restTemplate.exchange(address, HttpMethod.POST, requestEntity, TechnologyDto.class).getBody();
     }
 
     public TechnologyDto findById(int id) {
@@ -54,10 +54,10 @@ public class TechnologyClientImpl implements TechnologyClient {
     private  <T> List<T> exchangeAsList(String uri, ParameterizedTypeReference<List<T>> responseType) {
         return restTemplate.exchange(uri, HttpMethod.GET, null, responseType).getBody();
     }
-    private String addressCreation(String id, String name, String technologyType, String ring) {
+    private String addressCreation(String id, String name, String technologyType, String rang) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(address)
                 .queryParamIfPresent("technologyType", Optional.ofNullable(technologyType))
-                .queryParamIfPresent("rang", Optional.ofNullable(ring))
+                .queryParamIfPresent("rang", Optional.ofNullable(rang))
                 .queryParamIfPresent("id", Optional.ofNullable(id))
                 .queryParamIfPresent("name", Optional.ofNullable(name));
         return builder.buildAndExpand().toString();

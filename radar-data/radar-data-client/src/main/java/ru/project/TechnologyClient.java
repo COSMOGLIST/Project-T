@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TechnologyClient {
 
-    void creation(TechnologyDto technologyDto);
+    TechnologyDto creation(TechnologyDto technologyDto);
 
     TechnologyDto findById(int id);
 
@@ -14,5 +14,5 @@ public interface TechnologyClient {
 
     void changeRang(int id, String rang);
 
-    List<TechnologyDto> getByCriteria(String id, String name, String technologyType, String ring);
+    List<TechnologyDto> getByCriteria(String id, String name, String technologyType, String rang);
 }

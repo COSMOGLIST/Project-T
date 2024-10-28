@@ -36,7 +36,7 @@ public class VotingService {
         technologyScoreRepository.save(
                 new TechnologyScore(technologyDto.getId(),
                         Rang.valueOf(technologyDto.getRang()).GetScore(),
-                        1));
+                        0));
     }
 
     public void removeTechnology(int technologyId) {

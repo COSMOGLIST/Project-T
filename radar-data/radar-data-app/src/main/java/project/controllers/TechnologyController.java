@@ -18,8 +18,8 @@ public class TechnologyController {
     }
 
     @PostMapping
-    public void creation(@RequestBody TechnologyDto technologyDto) {
-        technologyService.creation(technologyDto);
+    public TechnologyDto creation(@RequestBody TechnologyDto technologyDto) {
+        return technologyService.creation(technologyDto);
     }
 
     @PutMapping("/{id}")

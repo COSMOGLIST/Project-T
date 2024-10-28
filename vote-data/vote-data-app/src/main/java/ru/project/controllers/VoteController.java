@@ -21,7 +21,7 @@ public class VoteController {
     }
 
     @PostMapping
-    public void registerNewTechnology(TechnologyDto technologyDto) {
+    public void registerNewTechnology(@RequestBody TechnologyDto technologyDto) {
         votingService.registerNewTechnology(technologyDto);
     }
 

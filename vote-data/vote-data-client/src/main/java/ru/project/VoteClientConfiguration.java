@@ -19,7 +19,7 @@ public class VoteClientConfiguration {
     }
 
     @Bean
-    public RestTemplate provideTechnologyRestTemplate() {
+    public RestTemplate provideVoteRestTemplate() {
         return restTemplate;
     }
 }
