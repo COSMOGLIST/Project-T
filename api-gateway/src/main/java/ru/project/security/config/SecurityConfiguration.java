@@ -35,7 +35,7 @@ public class SecurityConfiguration {
                         authorization -> {
                             authorization.requestMatchers("/registration/**").permitAll();
                             authorization.requestMatchers("/admin/**").hasAuthority("ADMIN");
-                            authorization.requestMatchers("/user/**").hasAuthority("OWNER");
+                            authorization.requestMatchers("/user/**").hasAuthority("USER");
                             authorization.anyRequest().authenticated();
                         })
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
