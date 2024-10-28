@@ -12,6 +12,6 @@ public class TechnologyDto {
     private String name;
     private String link;
     private String version;
-    private String ring;
+    private String rang;
     private String technologyType;
 }

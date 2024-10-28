@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ru.project.models.Rang;
 
 @Entity
 @Getter
@@ -23,12 +24,12 @@ public class Technology {
     @Column
     private String version;
     @Column
-    private Ring ring;
-    public Technology(String name, TechnologyType technologyType, String link, String version, Ring ring) {
+    private Rang rang;
+    public Technology(String name, TechnologyType technologyType, String link, String version, Rang rang) {
         this.name = name;
         this.link = link;
         this.version = version;
-        this.ring = ring;
+        this.rang = rang;
         this.technologyType = technologyType;
     }
 }

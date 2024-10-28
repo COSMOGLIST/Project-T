@@ -8,7 +8,7 @@ import project.filters.TechnologyFields;
 import project.filters.TechnologyFilter;
 import project.mappers.Mapper;
 import project.models.Technology;
-import project.models.Ring;
+import ru.project.models.Rang;
 import project.models.TechnologyType;
 import project.repositories.TechnologyRepository;
 import ru.project.models.TechnologyDto;
@@ -33,24 +33,24 @@ public class TechnologyServiceImpl implements TechnologyService {
                 TechnologyType.valueOf(technologyDto.getTechnologyType()),
                 technologyDto.getLink(),
                 technologyDto.getVersion(),
-                Ring.valueOf(technologyDto.getRing()));
+                Rang.valueOf(technologyDto.getRang()));
         technologyRepository.save(technology);
     }
     public TechnologyDto findById(int id) {
         return technologyRepository.getReferenceById(id).toDto();
     }
-    public void vote(int id, String ring) {
+    public void changeRang(int id, String rang) {
         Technology technology = technologyRepository.getReferenceById(id);
-        technology.setRing(Ring.valueOf(ring));
+        technology.setRang(Rang.valueOf(rang));
         technologyRepository.save(technology);
     }
     public void deleteById(int id) {
         technologyRepository.deleteById(id);
     }
-    public List<TechnologyDto> getByCriteria(String id, String name, String technologyType, String ring) {
+    public List<TechnologyDto> getByCriteria(String id, String name, String technologyType, String rang) {
         List<TechnologyFilter> technologyFilters = new ArrayList<>();
-        if (ring != null) {
-            technologyFilters.add(new TechnologyFilter(TechnologyFields.ring, ring));
+        if (rang != null) {
+            technologyFilters.add(new TechnologyFilter(TechnologyFields.rang, rang));
         }
         if (technologyType != null) {
             technologyFilters.add(new TechnologyFilter(TechnologyFields.technologyType, technologyType));

@@ -4,16 +4,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.project.TechnologyClient;
 import ru.project.models.TechnologyDto;
+import ru.project.security.modelscha.VoteInfo;
+import ru.project.security.repositories.VotingRepository;
+import ru.project.security.services.UserService;
 
 import java.util.List;
 
 @Service
 public class TechnologyServiceUser {
     private TechnologyClient technologyClient;
+    private UserService userService;
 
     @Autowired
-    public TechnologyServiceUser(TechnologyClient technologyClient) {
+    public TechnologyServiceUser(TechnologyClient technologyClient, UserService userService) {
         this.technologyClient = technologyClient;
+        this.userService = userService;
     }
 
     public TechnologyDto findById(int id) {
@@ -25,6 +30,6 @@ public class TechnologyServiceUser {
     }
 
     public void vote(int id, String rang) {
-        technologyClient.vote(id, rang);
+        int userId = userService.getCurrentUser().getId();
     }
 }

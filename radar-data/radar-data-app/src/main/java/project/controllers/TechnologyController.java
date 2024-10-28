@@ -22,9 +22,9 @@ public class TechnologyController {
         technologyService.creation(technologyDto);
     }
 
-    @PutMapping("/{id}/vote")
-    public void vote(@PathVariable(name = "id") int id, @RequestParam(name = "ring") String ring) {
-        technologyService.vote(id, ring);
+    @PutMapping("/{id}")
+    public void changeRang(@PathVariable(name = "id") int id, @RequestParam(name = "rang") String rang) {
+        technologyService.changeRang(id, rang);
     }
 
     @GetMapping("/{id}")
@@ -41,7 +41,7 @@ public class TechnologyController {
     public List<TechnologyDto> getByCriteria(@RequestParam(name = "id", required = false) String id,
                                              @RequestParam(name = "name", required = false) String name,
                                              @RequestParam(name = "technologyType", required = false) String technologyType,
-                                             @RequestParam(name = "ring", required = false) String ring) {
-        return technologyService.getByCriteria(id, name, technologyType, ring);
+                                             @RequestParam(name = "rang", required = false) String rang) {
+        return technologyService.getByCriteria(id, name, technologyType, rang);
     }
 }

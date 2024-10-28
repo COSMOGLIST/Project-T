@@ -14,6 +14,9 @@
             <option value="$PROJECT_DIR$/radar-data/radar-data-app" />
             <option value="$PROJECT_DIR$/radar-data/radar-data-client" />
             <option value="$PROJECT_DIR$/radar-data/radar-data-models" />
+            <option value="$PROJECT_DIR$/vote-data" />
+            <option value="$PROJECT_DIR$/vote-data/vote-data-app" />
+            <option value="$PROJECT_DIR$/vote-data/vote-data-client" />
           </set>
         </option>
       </GradleProjectSettings>

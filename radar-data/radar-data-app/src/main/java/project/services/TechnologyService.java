@@ -6,7 +6,7 @@ import java.util.List;
 public interface TechnologyService {
     void creation(TechnologyDto technologyDto);
     TechnologyDto findById(int id);
-    void vote(int id, String ring);
+    void changeRang(int id, String rang);
     void deleteById(int id);
-    List<TechnologyDto> getByCriteria(String id, String name, String technologyType, String ring);
+    List<TechnologyDto> getByCriteria(String id, String name, String technologyType, String rang);
 }

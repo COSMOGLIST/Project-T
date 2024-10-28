@@ -3,6 +3,6 @@ package project.filters;
 public enum TechnologyFields {
     id,
     name,
-    ring,
+    rang,
     technologyType
 }

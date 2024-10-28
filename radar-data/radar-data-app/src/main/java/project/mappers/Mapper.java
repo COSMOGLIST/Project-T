@@ -13,7 +13,7 @@ public class Mapper {
                 .technologyType(technology.getTechnologyType().name())
                 .link(technology.getLink())
                 .version(technology.getVersion())
-                .ring(technology.getRing().name())
+                .rang(technology.getRang().name())
                 .build();
     }
 }

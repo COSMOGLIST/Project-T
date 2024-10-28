@@ -4,7 +4,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.4"
 }
 
-group = "ru.project"
+group = "org.example"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -12,14 +12,10 @@ repositories {
 }
 
 dependencies {
-    implementation(project(":radar-data:radar-data-client"))
-    implementation(project(":vote-data:vote-data-client"))
     implementation(project(":radar-data:radar-data-models"))
-    implementation("org.postgresql:postgresql:42.6.2")
-    implementation("org.springframework.boot:spring-boot-starter-amqp")
-    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.0.6")
-    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-web:3.0.6")
+    implementation("org.postgresql:postgresql:42.6.2")
     compileOnly("org.projectlombok:lombok:1.18.30")
     annotationProcessor("org.projectlombok:lombok:1.18.30")
     testImplementation(platform("org.junit:junit-bom:5.9.1"))

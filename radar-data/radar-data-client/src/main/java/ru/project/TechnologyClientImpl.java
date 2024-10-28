@@ -39,8 +39,11 @@ public class TechnologyClientImpl implements TechnologyClient {
         restTemplate.exchange(address + "/" + id, HttpMethod.DELETE, null, String.class);
     }
 
-    public void vote(int id, String rang) {
-        restTemplate.exchange(address + "/" + id + "/vote", HttpMethod.PUT, null, String.class);
+    public void changeRang(int id, String rang) {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(address + "/" + id)
+                .queryParam("rang", rang);
+        String uri = builder.buildAndExpand().toString();
+        restTemplate.exchange(uri, HttpMethod.PUT, null, String.class);
     }
 
 
@@ -54,7 +57,7 @@ public class TechnologyClientImpl implements TechnologyClient {
     private String addressCreation(String id, String name, String technologyType, String ring) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(address)
                 .queryParamIfPresent("technologyType", Optional.ofNullable(technologyType))
-                .queryParamIfPresent("ring", Optional.ofNullable(ring))
+                .queryParamIfPresent("rang", Optional.ofNullable(ring))
                 .queryParamIfPresent("id", Optional.ofNullable(id))
                 .queryParamIfPresent("name", Optional.ofNullable(name));
         return builder.buildAndExpand().toString();
