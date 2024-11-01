@@ -18,7 +18,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}/vote")
-    public void vote(@PathVariable(name = "id") int id, @RequestParam(name = "ring") String rang) {
+    public void vote(@PathVariable(name = "id") int id, @RequestParam(name = "rang") String rang) {
         technologyServiceUser.vote(id, rang);
     }
 
