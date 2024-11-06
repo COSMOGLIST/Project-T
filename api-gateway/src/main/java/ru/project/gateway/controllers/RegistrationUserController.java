@@ -1,5 +1,6 @@
 package ru.project.gateway.controllers;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,7 @@ public class RegistrationUserController {
     }
 
     @PostMapping
-    public UserDto creation(@RequestBody UserDto userDto) {
+    public UserDto creation(@Valid @RequestBody UserDto userDto) {
         return userService.CreateUser(userDto);
     }
 }

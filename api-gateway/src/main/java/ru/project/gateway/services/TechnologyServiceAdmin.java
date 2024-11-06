@@ -17,9 +17,10 @@ public class TechnologyServiceAdmin {
         this.voteClient = voteClient;
     }
 
-    public void creation(TechnologyDto technologyDto) {
+    public TechnologyDto creation(TechnologyDto technologyDto) {
         TechnologyDto newTechnology = technologyClient.creation(technologyDto);
         voteClient.registerNewTechnology(newTechnology);
+        return newTechnology;
     }
 
     public void deleteById(int id) {

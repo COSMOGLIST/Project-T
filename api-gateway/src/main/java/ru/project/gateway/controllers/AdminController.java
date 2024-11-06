@@ -1,5 +1,6 @@
 package ru.project.gateway.controllers;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.project.gateway.services.TechnologyServiceAdmin;
@@ -20,8 +21,8 @@ public class AdminController {
         this.technologyServiceUser = technologyServiceUser;
     }
     @PostMapping
-    public void creation(@RequestBody TechnologyDto technologyDto) {
-        technologyServiceAdmin.creation(technologyDto);
+    public TechnologyDto creation(@Valid @RequestBody TechnologyDto technologyDto) {
+        return technologyServiceAdmin.creation(technologyDto);
     }
 
     @PutMapping("/{id}/vote")
