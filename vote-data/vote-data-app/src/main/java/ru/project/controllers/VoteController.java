@@ -6,6 +6,7 @@ import ru.project.models.TechnologyDto;
 
 @RestController
 @RequestMapping("/vote")
+@CrossOrigin(origins = "http://localhost:3000")
 public class VoteController {
     private final VotingService votingService;
 

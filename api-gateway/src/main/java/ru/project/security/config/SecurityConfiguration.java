@@ -30,7 +30,6 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilter(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         authorization -> {
                             authorization.requestMatchers("/registration/**").permitAll();
