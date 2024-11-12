@@ -25,7 +25,7 @@ public class RegistrationUserController {
         return userService.CreateUser(userDto);
     }
 
-    @GetMapping("/authorization")
+    @PostMapping("/authorization")
     public UserDto getUser(@RequestBody UserDto userDto) throws Exception {
         if (userService.checkForExist(userDto.getName(), userDto.getPassword())) {
             return userService.getUserByName(userDto.getName());
