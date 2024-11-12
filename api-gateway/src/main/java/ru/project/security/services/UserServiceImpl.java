@@ -33,7 +33,19 @@ public class UserServiceImpl implements UserService {
     }
 
     public UserDto getUserByName(String name) {
-        return userRepository.findUserByName(name).asDto();
+        User user = userRepository.findUserByName(name);
+        if (user == null) {
+            return null;
+        }
+        return user.asDto();
+    }
+
+    public boolean checkForExist(String name, String password) {
+        User user = userRepository.findUserByName(name);
+        if (user == null) {
+            return false;
+        }
+        return encoder().matches(password, user.getPassword());
     }
     private PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();

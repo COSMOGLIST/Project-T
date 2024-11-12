@@ -7,7 +7,7 @@ import ru.project.security.models.UserDto;
 import ru.project.security.services.UserService;
 
 @RestController
-@RequestMapping("/registration")
+@RequestMapping
 @CrossOrigin(origins = "http://localhost:3000")
 public class RegistrationUserController {
 
@@ -17,8 +17,21 @@ public class RegistrationUserController {
         this.userService = userService;
     }
 
-    @PostMapping
-    public UserDto creation(@Valid @RequestBody UserDto userDto) {
+    @PostMapping("/registration")
+    public UserDto creation(@Valid @RequestBody UserDto userDto) throws Exception {
+        if (userService.getUserByName(userDto.getName()) != null) {
+            throw new Exception("This username already exists");
+        }
         return userService.CreateUser(userDto);
+    }
+
+    @GetMapping("/authorization")
+    public UserDto getUser(@RequestBody UserDto userDto) throws Exception {
+        if (userService.checkForExist(userDto.getName(), userDto.getPassword())) {
+            return userService.getUserByName(userDto.getName());
+        } else {
+            throw new Exception("No such user");
+        }
+
     }
 }
