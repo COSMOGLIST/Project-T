@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/technology")
-@CrossOrigin(origins = "http://localhost:3000")
 public class TechnologyController {
     private final TechnologyService technologyService;
 

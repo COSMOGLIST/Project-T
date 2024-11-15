@@ -19,6 +19,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import ru.project.security.services.MyUserDetailService;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -35,7 +36,8 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilter(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(AbstractHttpConfigurer::disable)
+                .cors((cors) -> cors
+                        .configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(
                         authorization -> {
                             authorization.requestMatchers("/registration/**").permitAll();
@@ -49,6 +51,17 @@ public class SecurityConfiguration {
                 .httpBasic(Customizer.withDefaults())
                 .userDetailsService(userDetailService)
                 .build();
+    }
+
+    @Bean
+    UrlBasedCorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(List.of("http://localhost:3000"));
+        configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowCredentials(true);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
     @Bean
     public UserDetailsService userDetailsService() {
